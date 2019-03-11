@@ -85,7 +85,7 @@
  * Option descriptor structure.
  */
 
-typedef unsigned char	bool;
+typedef unsigned char	BOOL;
 
 enum opt_type {
 	o_special_noarg = 0,
@@ -235,10 +235,10 @@ extern int	link_stats_valid; /* set if link_stats is valid */
 extern unsigned	link_connect_time; /* time the link was up for */
 extern int	using_pty;	/* using pty as device (notty or pty opt.) */
 extern int	log_to_fd;	/* logging to this fd as well as syslog */
-extern bool	log_default;	/* log_to_fd is default (stdout) */
+extern BOOL	log_default;	/* log_to_fd is default (stdout) */
 extern char	*no_ppp_msg;	/* message to print if ppp not in kernel */
 extern volatile int status;	/* exit status for pppd */
-extern bool	devnam_fixed;	/* can no longer change devnam */
+extern BOOL	devnam_fixed;	/* can no longer change devnam */
 extern int	unsuccess;	/* # unsuccessful connection attempts */
 extern int	do_callback;	/* set if we want to do callback next */
 extern int	doing_callback;	/* set if this is a callback */
@@ -249,10 +249,10 @@ extern int      ppp_session_number; /* Session number (eg PPPoE session) */
 extern int	fd_devnull;	/* fd open to /dev/null */
 
 extern int	listen_time;	/* time to listen first (ms) */
-extern bool	doing_multilink;
-extern bool	multilink_master;
-extern bool	bundle_eof;
-extern bool	bundle_terminating;
+extern BOOL	doing_multilink;
+extern BOOL	multilink_master;
+extern BOOL	bundle_eof;
+extern BOOL	bundle_terminating;
 
 extern struct notifier *pidchange;   /* for notifications of pid changing */
 extern struct notifier *phasechange; /* for notifications of phase changes */
@@ -280,13 +280,13 @@ extern int	default_device;	/* Using /dev/tty or equivalent */
 extern char	devnam[MAXPATHLEN];	/* Device name */
 extern int	crtscts;	/* Use hardware flow control */
 extern int	stop_bits;	/* Number of serial port stop bits */
-extern bool	modem;		/* Use modem control lines */
+extern BOOL	modem;		/* Use modem control lines */
 extern int	inspeed;	/* Input/Output speed requested */
 extern u_int32_t netmask;	/* IP netmask to set on interface */
-extern bool	lockflag;	/* Create lock file to lock the serial dev */
-extern bool	nodetach;	/* Don't detach from controlling tty */
-extern bool	updetach;	/* Detach from controlling tty when link up */
-extern bool	master_detach;	/* Detach when multilink master without link */
+extern BOOL	lockflag;	/* Create lock file to lock the serial dev */
+extern BOOL	nodetach;	/* Don't detach from controlling tty */
+extern BOOL	updetach;	/* Detach from controlling tty when link up */
+extern BOOL	master_detach;	/* Detach when multilink master without link */
 extern char	*initializer;	/* Script to initialize physical link */
 extern char	*connect_script; /* Script to establish physical link */
 extern char	*disconnect_script; /* Script to disestablish physical link */
@@ -295,34 +295,34 @@ extern char	*ptycommand;	/* Command to run on other side of pty */
 extern int	maxconnect;	/* Maximum connect time (seconds) */
 extern char	user[MAXNAMELEN];/* Our name for authenticating ourselves */
 extern char	passwd[MAXSECRETLEN];	/* Password for PAP or CHAP */
-extern bool	auth_required;	/* Peer is required to authenticate */
-extern bool	persist;	/* Reopen link after it goes down */
-extern bool	uselogin;	/* Use /etc/passwd for checking PAP */
-extern bool	session_mgmt;	/* Do session management (login records) */
+extern BOOL	auth_required;	/* Peer is required to authenticate */
+extern BOOL	persist;	/* Reopen link after it goes down */
+extern BOOL	uselogin;	/* Use /etc/passwd for checking PAP */
+extern BOOL	session_mgmt;	/* Do session management (login records) */
 extern char	our_name[MAXNAMELEN];/* Our name for authentication purposes */
 extern char	remote_name[MAXNAMELEN]; /* Peer's name for authentication */
-extern bool	explicit_remote;/* remote_name specified with remotename opt */
-extern bool	demand;		/* Do dial-on-demand */
+extern BOOL	explicit_remote;/* remote_name specified with remotename opt */
+extern BOOL	demand;		/* Do dial-on-demand */
 extern char	*ipparam;	/* Extra parameter for ip up/down scripts */
-extern bool	cryptpap;	/* Others' PAP passwords are encrypted */
+extern BOOL	cryptpap;	/* Others' PAP passwords are encrypted */
 extern int	idle_time_limit;/* Shut down link if idle for this long */
 extern int	holdoff;	/* Dead time before restarting */
-extern bool	holdoff_specified; /* true if user gave a holdoff value */
-extern bool	notty;		/* Stdin/out is not a tty */
+extern BOOL	holdoff_specified; /* true if user gave a holdoff value */
+extern BOOL	notty;		/* Stdin/out is not a tty */
 extern char	*pty_socket;	/* Socket to connect to pty */
 extern char	*record_file;	/* File to record chars sent/received */
-extern bool	sync_serial;	/* Device is synchronous serial device */
+extern BOOL	sync_serial;	/* Device is synchronous serial device */
 extern int	maxfail;	/* Max # of unsuccessful connection attempts */
 extern char	linkname[MAXPATHLEN]; /* logical name for link */
-extern bool	tune_kernel;	/* May alter kernel settings as necessary */
+extern BOOL	tune_kernel;	/* May alter kernel settings as necessary */
 extern int	connect_delay;	/* Time to delay after connect script */
 extern int	max_data_rate;	/* max bytes/sec through charshunt */
 extern int	req_unit;	/* interface unit number to use */
-extern bool	multilink;	/* enable multilink operation */
-extern bool	noendpoint;	/* don't send or accept endpt. discrim. */
+extern BOOL	multilink;	/* enable multilink operation */
+extern BOOL	noendpoint;	/* don't send or accept endpt. discrim. */
 extern char	*bundle_name;	/* bundle name for multilink */
-extern bool	dump_options;	/* print out option values */
-extern bool	dryrun;		/* check everything, print options, exit */
+extern BOOL	dump_options;	/* print out option values */
+extern BOOL	dryrun;		/* check everything, print options, exit */
 extern int	child_wait;	/* # seconds to wait for children at end */
 
 #ifdef MAXOCTETS
@@ -347,7 +347,7 @@ extern struct	bpf_program active_filter; /* Filter for link-active pkts */
 #endif
 
 #ifdef MSLANMAN
-extern bool	ms_lanman;	/* Use LanMan password instead of NT */
+extern BOOL	ms_lanman;	/* Use LanMan password instead of NT */
 				/* Has meaning only with MS-CHAP challenges */
 #endif
 
@@ -415,7 +415,7 @@ struct protent {
 			  void *arg));
     /* Process a received data packet */
     void (*datainput) __P((int unit, u_char *pkt, int len));
-    bool enabled_flag;		/* 0 iff protocol is disabled */
+    BOOL enabled_flag;		/* 0 iff protocol is disabled */
     char *name;			/* Text name of protocol */
     char *data_name;		/* Text name of corresponding data protocol */
     option_t *options;		/* List of command-line options */
@@ -471,8 +471,8 @@ extern struct channel *the_channel;
 struct userenv {
 	struct userenv *ue_next;
 	char *ue_value;		/* value (set only) */
-	bool ue_isset;		/* 1 for set, 0 for unset */
-	bool ue_priv;		/* from privileged source */
+	BOOL ue_isset;		/* 1 for set, 0 for unset */
+	BOOL ue_priv;		/* from privileged source */
 	const char *ue_source;	/* source name */
 	char ue_name[1];	/* variable name */
 };

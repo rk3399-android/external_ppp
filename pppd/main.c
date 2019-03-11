@@ -90,6 +90,9 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#if defined(__ANDROID__)
+#include <cutils/properties.h>
+#endif
 
 #include "pppd.h"
 #include "magic.h"
@@ -208,8 +211,8 @@ int link_stats_valid;
 
 int error_count;
 
-bool bundle_eof;
-bool bundle_terminating;
+BOOL bundle_eof;
+BOOL bundle_terminating;
 
 /*
  * We maintain a list of child process pids and
@@ -320,6 +323,8 @@ main(argc, argv)
     new_phase(PHASE_INITIALIZE);
 
     script_env = NULL;
+
+    property_set("net.pppoe.error.codes", "");
 
     /* Initialize syslog facilities */
     reopen_log();
@@ -849,11 +854,16 @@ static void
 create_pidfile(pid)
     int pid;
 {
-#if !defined(__ANDROID__)
+//#if !defined(__ANDROID__)
     FILE *pidfile;
 
+#if 1
+    slprintf(pidfilename, sizeof(pidfilename), "%s%s.pid",
+	     "/data/misc/ppp/", ifname);
+#else
     slprintf(pidfilename, sizeof(pidfilename), "%s%s.pid",
 	     _PATH_VARRUN, ifname);
+#endif
     if ((pidfile = fopen(pidfilename, "w")) != NULL) {
 	fprintf(pidfile, "%d\n", pid);
 	(void) fclose(pidfile);
@@ -861,7 +871,7 @@ create_pidfile(pid)
 	error("Failed to create pid file %s: %m", pidfilename);
 	pidfilename[0] = 0;
     }
-#endif
+//#endif
 }
 
 void
@@ -1662,7 +1672,7 @@ safe_fork(int infd, int outfd, int errfd)
 	return 0;
 }
 
-static bool
+static BOOL
 add_script_env(pos, newstring)
     int pos;
     char *newstring;

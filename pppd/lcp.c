@@ -73,8 +73,8 @@ static void lcp_delayed_up __P((void *));
  */
 int	lcp_echo_interval = 0; 	/* Interval between LCP echo-requests */
 int	lcp_echo_fails = 0;	/* Tolerance to unanswered echo-requests */
-bool	lax_recv = 0;		/* accept control chars in asyncmap */
-bool	noendpoint = 0;		/* don't send/accept endpoint discriminator */
+BOOL	lax_recv = 0;		/* accept control chars in asyncmap */
+BOOL	noendpoint = 0;		/* don't send/accept endpoint discriminator */
 
 static int noopt __P((char **));
 

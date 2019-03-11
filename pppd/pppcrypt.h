@@ -33,8 +33,8 @@
 #ifndef PPPCRYPT_H
 #define	PPPCRYPT_H
 
-extern bool	DesSetkey __P((u_char *));
-extern bool	DesEncrypt __P((u_char *, u_char *));
-extern bool	DesDecrypt __P((u_char *, u_char *));
+extern BOOL	DesSetkey __P((u_char *));
+extern BOOL	DesEncrypt __P((u_char *, u_char *));
+extern BOOL	DesDecrypt __P((u_char *, u_char *));
 
 #endif /* PPPCRYPT_H */

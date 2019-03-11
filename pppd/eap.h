@@ -129,7 +129,7 @@ typedef struct eap_state {
 	int es_savedtime;		/* Saved timeout */
 	int es_rechallenge;		/* EAP rechallenge interval */
 	int es_lwrechallenge;		/* SRP lightweight rechallenge inter */
-	bool es_usepseudo;		/* Use SRP Pseudonym if offered one */
+	BOOL es_usepseudo;		/* Use SRP Pseudonym if offered one */
 	int es_usedpseudo;		/* Set if we already sent PN */
 	int es_challen;			/* Length of challenge string */
 	u_char es_challenge[MAX_CHALLENGE_LENGTH];

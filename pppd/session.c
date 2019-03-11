@@ -100,7 +100,7 @@
 #define SESSION_OK      1
 
 /* We have successfully started a session */
-static bool logged_in = 0;
+static BOOL logged_in = 0;
 
 #ifdef USE_PAM
 /*
@@ -174,10 +174,10 @@ session_start(flags, user, passwd, ttyName, msg)
     char **msg;
 {
 #ifdef USE_PAM
-    bool ok = 1;
+    BOOL ok = 1;
     const char *usr;
     int pam_error;
-    bool try_session = 0;
+    BOOL try_session = 0;
 #else /* #ifdef USE_PAM */
     struct passwd *pw;
     char *cbuf;

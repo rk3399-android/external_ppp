@@ -128,7 +128,7 @@ u_char *out;
 	}
 }
 
-bool
+BOOL
 DesSetkey(key)
 u_char *key;
 {
@@ -144,7 +144,7 @@ u_char *key;
 	return (1);
 }
 
-bool
+BOOL
 DesEncrypt(clear, cipher)
 u_char *clear;	/* IN  8 octets */
 u_char *cipher;	/* OUT 8 octets */
@@ -160,7 +160,7 @@ u_char *cipher;	/* OUT 8 octets */
 	return (1);
 }
 
-bool
+BOOL
 DesDecrypt(cipher, clear)
 u_char *cipher;	/* IN  8 octets */
 u_char *clear;	/* OUT 8 octets */
@@ -179,7 +179,7 @@ u_char *clear;	/* OUT 8 octets */
 #elif defined(USE_OPENSSL)
 static DES_key_schedule key_schedule;
 
-bool
+BOOL
 DesSetkey(key)
 u_char *key;
 {
@@ -189,7 +189,7 @@ u_char *key;
 	return (1);
 }
 
-bool
+BOOL
 DesEncrypt(clear, cipher)
 u_char *clear;	/* IN  8 octets */
 u_char *cipher;	/* OUT 8 octets */
@@ -199,7 +199,7 @@ u_char *cipher;	/* OUT 8 octets */
 	return (1);
 }
 
-bool
+BOOL
 DesDecrypt(cipher, clear)
 u_char *cipher;	/* IN  8 octets */
 u_char *clear;	/* OUT 8 octets */
@@ -212,7 +212,7 @@ u_char *clear;	/* OUT 8 octets */
 #elif defined(USE_LIBDES)
 static des_key_schedule	key_schedule;
 
-bool
+BOOL
 DesSetkey(key)
 u_char *key;
 {
@@ -222,7 +222,7 @@ u_char *key;
 	return (1);
 }
 
-bool
+BOOL
 #if defined(__ANDROID__)
 DesEncrypt(clear, cipher)
 #else
@@ -236,7 +236,7 @@ u_char *cipher;	/* OUT 8 octets */
 	return (1);
 }
 
-bool
+BOOL
 DesDecrypt(cipher, clear)
 u_char *cipher;	/* IN  8 octets */
 u_char *clear;	/* OUT 8 octets */

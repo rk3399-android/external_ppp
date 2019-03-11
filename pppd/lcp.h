@@ -86,22 +86,22 @@
  * The state of options is described by an lcp_options structure.
  */
 typedef struct lcp_options {
-    bool passive;		/* Don't die if we don't get a response */
-    bool silent;		/* Wait for the other end to start first */
-    bool restart;		/* Restart vs. exit after close */
-    bool neg_mru;		/* Negotiate the MRU? */
-    bool neg_asyncmap;		/* Negotiate the async map? */
-    bool neg_upap;		/* Ask for UPAP authentication? */
-    bool neg_chap;		/* Ask for CHAP authentication? */
-    bool neg_eap;		/* Ask for EAP authentication? */
-    bool neg_magicnumber;	/* Ask for magic number? */
-    bool neg_pcompression;	/* HDLC Protocol Field Compression? */
-    bool neg_accompression;	/* HDLC Address/Control Field Compression? */
-    bool neg_lqr;		/* Negotiate use of Link Quality Reports */
-    bool neg_cbcp;		/* Negotiate use of CBCP */
-    bool neg_mrru;		/* negotiate multilink MRRU */
-    bool neg_ssnhf;		/* negotiate short sequence numbers */
-    bool neg_endpoint;		/* negotiate endpoint discriminator */
+    BOOL passive;		/* Don't die if we don't get a response */
+    BOOL silent;		/* Wait for the other end to start first */
+    BOOL restart;		/* Restart vs. exit after close */
+    BOOL neg_mru;		/* Negotiate the MRU? */
+    BOOL neg_asyncmap;		/* Negotiate the async map? */
+    BOOL neg_upap;		/* Ask for UPAP authentication? */
+    BOOL neg_chap;		/* Ask for CHAP authentication? */
+    BOOL neg_eap;		/* Ask for EAP authentication? */
+    BOOL neg_magicnumber;	/* Ask for magic number? */
+    BOOL neg_pcompression;	/* HDLC Protocol Field Compression? */
+    BOOL neg_accompression;	/* HDLC Address/Control Field Compression? */
+    BOOL neg_lqr;		/* Negotiate use of Link Quality Reports */
+    BOOL neg_cbcp;		/* Negotiate use of CBCP */
+    BOOL neg_mrru;		/* negotiate multilink MRRU */
+    BOOL neg_ssnhf;		/* negotiate short sequence numbers */
+    BOOL neg_endpoint;		/* negotiate endpoint discriminator */
     int  mru;			/* Value of MRU */
     int	 mrru;			/* Value of MRRU, and multilink enable */
     u_char chap_mdtype;		/* which MD types (hashing algorithm) */

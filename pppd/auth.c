@@ -158,7 +158,7 @@ static int num_np_up;
 static int passwd_from_file;
 
 /* Set if we require authentication only because we have a default route. */
-static bool default_auth;
+static BOOL default_auth;
 
 /* Hook to enable a plugin to control the idle time limit */
 int (*idle_time_hook) __P((struct ppp_idle *)) = NULL;
@@ -218,25 +218,25 @@ static pid_t auth_script_pid = 0;
 /*
  * Option variables.
  */
-bool uselogin = 0;		/* Use /etc/passwd for checking PAP */
-bool session_mgmt = 0;		/* Do session management (login records) */
-bool cryptpap = 0;		/* Passwords in pap-secrets are encrypted */
-bool refuse_pap = 0;		/* Don't wanna auth. ourselves with PAP */
-bool refuse_chap = 0;		/* Don't wanna auth. ourselves with CHAP */
-bool refuse_eap = 0;		/* Don't wanna auth. ourselves with EAP */
+BOOL uselogin = 0;		/* Use /etc/passwd for checking PAP */
+BOOL session_mgmt = 0;		/* Do session management (login records) */
+BOOL cryptpap = 0;		/* Passwords in pap-secrets are encrypted */
+BOOL refuse_pap = 0;		/* Don't wanna auth. ourselves with PAP */
+BOOL refuse_chap = 0;		/* Don't wanna auth. ourselves with CHAP */
+BOOL refuse_eap = 0;		/* Don't wanna auth. ourselves with EAP */
 #ifdef CHAPMS
-bool refuse_mschap = 0;		/* Don't wanna auth. ourselves with MS-CHAP */
-bool refuse_mschap_v2 = 0;	/* Don't wanna auth. ourselves with MS-CHAPv2 */
+BOOL refuse_mschap = 0;		/* Don't wanna auth. ourselves with MS-CHAP */
+BOOL refuse_mschap_v2 = 0;	/* Don't wanna auth. ourselves with MS-CHAPv2 */
 #else
-bool refuse_mschap = 1;		/* Don't wanna auth. ourselves with MS-CHAP */
-bool refuse_mschap_v2 = 1;	/* Don't wanna auth. ourselves with MS-CHAPv2 */
+BOOL refuse_mschap = 1;		/* Don't wanna auth. ourselves with MS-CHAP */
+BOOL refuse_mschap_v2 = 1;	/* Don't wanna auth. ourselves with MS-CHAPv2 */
 #endif
-bool usehostname = 0;		/* Use hostname for our_name */
-bool auth_required = 0;		/* Always require authentication from peer */
-bool allow_any_ip = 0;		/* Allow peer to use any IP address */
-bool explicit_remote = 0;	/* User specified explicit remote name */
-bool explicit_user = 0;		/* Set if "user" option supplied */
-bool explicit_passwd = 0;	/* Set if "password" option supplied */
+BOOL usehostname = 0;		/* Use hostname for our_name */
+BOOL auth_required = 0;		/* Always require authentication from peer */
+BOOL allow_any_ip = 0;		/* Allow peer to use any IP address */
+BOOL explicit_remote = 0;	/* User specified explicit remote name */
+BOOL explicit_user = 0;		/* Set if "user" option supplied */
+BOOL explicit_passwd = 0;	/* Set if "password" option supplied */
 char remote_name[MAXNAMELEN];	/* Peer's name for authentication */
 
 static char *uafname;		/* name of most recent +ua file */

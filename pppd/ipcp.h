@@ -66,20 +66,20 @@
 				/* compression option*/ 
 
 typedef struct ipcp_options {
-    bool neg_addr;		/* Negotiate IP Address? */
-    bool old_addrs;		/* Use old (IP-Addresses) option? */
-    bool req_addr;		/* Ask peer to send IP address? */
-    bool default_route;		/* Assign default route through interface? */
-    bool proxy_arp;		/* Make proxy ARP entry for peer? */
-    bool neg_vj;		/* Van Jacobson Compression? */
-    bool old_vj;		/* use old (short) form of VJ option? */
-    bool accept_local;		/* accept peer's value for ouraddr */
-    bool accept_remote;		/* accept peer's value for hisaddr */
-    bool req_dns1;		/* Ask peer to send primary DNS address? */
-    bool req_dns2;		/* Ask peer to send secondary DNS address? */
+    BOOL neg_addr;		/* Negotiate IP Address? */
+    BOOL old_addrs;		/* Use old (IP-Addresses) option? */
+    BOOL req_addr;		/* Ask peer to send IP address? */
+    BOOL default_route;		/* Assign default route through interface? */
+    BOOL proxy_arp;		/* Make proxy ARP entry for peer? */
+    BOOL neg_vj;		/* Van Jacobson Compression? */
+    BOOL old_vj;		/* use old (short) form of VJ option? */
+    BOOL accept_local;		/* accept peer's value for ouraddr */
+    BOOL accept_remote;		/* accept peer's value for hisaddr */
+    BOOL req_dns1;		/* Ask peer to send primary DNS address? */
+    BOOL req_dns2;		/* Ask peer to send secondary DNS address? */
     int  vj_protocol;		/* protocol value to use in VJ option */
     int  maxslotindex;		/* values for RFC1332 VJ compression neg. */
-    bool cflag;
+    BOOL cflag;
     u_int32_t ouraddr, hisaddr;	/* Addresses in NETWORK BYTE ORDER */
     u_int32_t dnsaddr[2];	/* Primary and secondary MS DNS entries */
     u_int32_t winsaddr[2];	/* Primary and secondary MS WINS entries */

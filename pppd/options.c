@@ -94,30 +94,30 @@ int	debug = 0;		/* Debug flag */
 int	kdebugflag = 0;		/* Tell kernel to print debug messages */
 int	default_device = 1;	/* Using /dev/tty or equivalent */
 char	devnam[MAXPATHLEN];	/* Device name */
-bool	nodetach = 0;		/* Don't detach from controlling tty */
-bool	updetach = 0;		/* Detach once link is up */
-bool	master_detach;		/* Detach when we're (only) multilink master */
+BOOL	nodetach = 0;		/* Don't detach from controlling tty */
+BOOL	updetach = 0;		/* Detach once link is up */
+BOOL	master_detach;		/* Detach when we're (only) multilink master */
 int	maxconnect = 0;		/* Maximum connect time */
 char	user[MAXNAMELEN];	/* Username for PAP */
 char	passwd[MAXSECRETLEN];	/* Password for PAP */
-bool	persist = 0;		/* Reopen link after it goes down */
+BOOL	persist = 0;		/* Reopen link after it goes down */
 char	our_name[MAXNAMELEN];	/* Our name for authentication purposes */
-bool	demand = 0;		/* do dial-on-demand */
+BOOL	demand = 0;		/* do dial-on-demand */
 char	*ipparam = NULL;	/* Extra parameter for ip up/down scripts */
 int	idle_time_limit = 0;	/* Disconnect if idle for this many seconds */
 int	holdoff = 30;		/* # seconds to pause before reconnecting */
-bool	holdoff_specified;	/* true if a holdoff value has been given */
+BOOL	holdoff_specified;	/* true if a holdoff value has been given */
 int	log_to_fd = 1;		/* send log messages to this fd too */
-bool	log_default = 1;	/* log_to_fd is default (stdout) */
+BOOL	log_default = 1;	/* log_to_fd is default (stdout) */
 int	maxfail = 10;		/* max # of unsuccessful connection attempts */
 char	linkname[MAXPATHLEN];	/* logical name for link */
-bool	tune_kernel;		/* may alter kernel settings */
+BOOL	tune_kernel;		/* may alter kernel settings */
 int	connect_delay = 1000;	/* wait this many ms after connect script */
 int	req_unit = -1;		/* requested interface unit */
-bool	multilink = 0;		/* Enable multilink operation */
+BOOL	multilink = 0;		/* Enable multilink operation */
 char	*bundle_name = NULL;	/* bundle name for multilink */
-bool	dump_options;		/* print out option values */
-bool	dryrun;			/* print out option values and exit */
+BOOL	dump_options;		/* print out option values */
+BOOL	dryrun;			/* print out option values and exit */
 char	*domain;		/* domain name set by domain option */
 int	child_wait = 5;		/* # seconds to wait for children at exit */
 struct userenv *userenv_list;	/* user environment variables */
@@ -142,7 +142,7 @@ char *current_option;		/* the name of the option being parsed */
 int  privileged_option;		/* set iff the current option came from root */
 char *option_source;		/* string saying where the option came from */
 int  option_priority = OPRIO_CFGFILE; /* priority of the current options */
-bool devnam_fixed;		/* can no longer change device name */
+BOOL devnam_fixed;		/* can no longer change device name */
 
 static int logfile_fd = -1;	/* fd opened for log file */
 static char logfile_name[MAXPATHLEN];	/* name of log file */
@@ -689,7 +689,7 @@ process_option(opt, cmd, argv)
 		     opt->name, optopt);
 	return 0;
     }
-    if ((opt->flags & OPT_ENABLE) && *(bool *)(opt->addr2) == 0) {
+    if ((opt->flags & OPT_ENABLE) && *(BOOL *)(opt->addr2) == 0) {
 	option_error("%s%s is disabled", opt->name, optopt);
 	return 0;
     }
@@ -702,11 +702,11 @@ process_option(opt, cmd, argv)
     switch (opt->type) {
     case o_bool:
 	v = opt->flags & OPT_VALUE;
-	*(bool *)(opt->addr) = v;
+	*(BOOL *)(opt->addr) = v;
 	if (opt->addr2 && (opt->flags & OPT_A2COPY))
-	    *(bool *)(opt->addr2) = v;
+	    *(BOOL *)(opt->addr2) = v;
 	else if (opt->addr2 && (opt->flags & OPT_A2CLR))
-	    *(bool *)(opt->addr2) = 0;
+	    *(BOOL *)(opt->addr2) = 0;
 	else if (opt->addr2 && (opt->flags & OPT_A2CLRB))
 	    *(u_char *)(opt->addr2) &= ~v;
 	else if (opt->addr2 && (opt->flags & OPT_A2OR))
@@ -820,11 +820,11 @@ process_option(opt, cmd, argv)
 
     /*
      * If addr2 wasn't used by any flag (OPT_A2COPY, etc.) but is set,
-     * treat it as a bool and set/clear it based on the OPT_A2CLR bit.
+     * treat it as a BOOL and set/clear it based on the OPT_A2CLR bit.
      */
     if (opt->addr2 && (opt->flags & (OPT_A2COPY|OPT_ENABLE
 		|OPT_A2PRINTER|OPT_A2STRVAL|OPT_A2LIST|OPT_A2OR)) == 0)
-	*(bool *)(opt->addr2) = !(opt->flags & OPT_A2CLR);
+	*(BOOL *)(opt->addr2) = !(opt->flags & OPT_A2CLR);
 
     mainopt->source = option_source;
     mainopt->priority = prio;
@@ -914,7 +914,7 @@ print_option(opt, mainopt, printer, arg)
 	switch (opt->type) {
 	case o_bool:
 		v = opt->flags & OPT_VALUE;
-		if (*(bool *)opt->addr != v)
+		if (*(BOOL *)opt->addr != v)
 			/* this can happen legitimately, e.g. lock
 			   option turned off for default device */
 			break;

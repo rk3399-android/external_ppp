@@ -137,18 +137,18 @@ struct stat devstat;		/* result of stat() on devnam */
 /* option variables */
 int	crtscts = 0;		/* Use hardware flow control */
 int	stop_bits = 1;		/* Number of serial port stop bits */
-bool	modem = 1;		/* Use modem control lines */
+BOOL	modem = 1;		/* Use modem control lines */
 int	inspeed = 0;		/* Input/Output speed requested */
-bool	lockflag = 0;		/* Create lock file to lock the serial dev */
+BOOL	lockflag = 0;		/* Create lock file to lock the serial dev */
 char	*initializer = NULL;	/* Script to initialize physical link */
 char	*connect_script = NULL;	/* Script to establish physical link */
 char	*disconnect_script = NULL; /* Script to disestablish physical link */
 char	*welcomer = NULL;	/* Script to run after phys link estab. */
 char	*ptycommand = NULL;	/* Command to run on other side of pty */
-bool	notty = 0;		/* Stdin/out is not a tty */
+BOOL	notty = 0;		/* Stdin/out is not a tty */
 char	*record_file = NULL;	/* File to record chars sent/received */
 int	max_data_rate;		/* max bytes/sec through charshunt */
-bool	sync_serial = 0;	/* Device is synchronous serial device */
+BOOL	sync_serial = 0;	/* Device is synchronous serial device */
 char	*pty_socket = NULL;	/* Socket to connect to pty */
 int	using_pty = 0;		/* we're allocating a pty as the device */
 

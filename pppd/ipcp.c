@@ -71,8 +71,8 @@ ipcp_options ipcp_hisoptions[NUM_PPP];	/* Options that we ack'd */
 
 u_int32_t netmask = 0;		/* IP netmask to set on interface */
 
-bool	disable_defaultip = 0;	/* Don't use hostname for default IP adrs */
-bool	noremoteip = 0;		/* Let him have no IP address */
+BOOL	disable_defaultip = 0;	/* Don't use hostname for default IP adrs */
+BOOL	noremoteip = 0;		/* Let him have no IP address */
 
 /* Hook for a plugin to know when IP protocol has come up */
 void (*ip_up_hook) __P((void)) = NULL;
@@ -90,10 +90,10 @@ struct notifier *ip_down_notifier = NULL;
 /* local vars */
 static int default_route_set[NUM_PPP];	/* Have set up a default route */
 static int proxy_arp_set[NUM_PPP];	/* Have created proxy arp entry */
-static bool usepeerdns;			/* Ask peer for DNS addrs */
+static BOOL usepeerdns;			/* Ask peer for DNS addrs */
 static int ipcp_is_up;			/* have called np_up() */
 static int ipcp_is_open;		/* haven't called np_finished() */
-static bool ask_for_local;		/* request our address from peer */
+static BOOL ask_for_local;		/* request our address from peer */
 static char vj_value[8];		/* string form of vj option value */
 static char netmask_str[20];		/* string form of netmask value */
 
@@ -2113,7 +2113,7 @@ static void
 create_resolv(peerdns1, peerdns2)
     u_int32_t peerdns1, peerdns2;
 {
-#if !defined(__ANDROID__)
+//#if !defined(__ANDROID__)
     FILE *f;
 
     f = fopen(_PATH_RESOLV, "w");
@@ -2132,7 +2132,7 @@ create_resolv(peerdns1, peerdns2)
 	error("Write failed to %s: %m", _PATH_RESOLV);
 
     fclose(f);
-#endif
+//#endif
 }
 
 /*

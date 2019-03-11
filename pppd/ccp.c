@@ -66,7 +66,7 @@ static char deflate_value[8];
  * Option variables.
  */
 #ifdef MPPE
-bool refuse_mppe_stateful = 1;		/* Allow stateful mode? */
+BOOL refuse_mppe_stateful = 1;		/* Allow stateful mode? */
 #endif
 
 static option_t ccp_option_list[] = {
@@ -1078,7 +1078,7 @@ ccp_reqci(f, p, lenp, dont_nak)
     ccp_options *ho = &ccp_hisoptions[f->unit];
     ccp_options *ao = &ccp_allowoptions[f->unit];
 #ifdef MPPE
-    bool rej_for_ci_mppe = 1;	/* Are we rejecting based on a bad/missing */
+    BOOL rej_for_ci_mppe = 1;	/* Are we rejecting based on a bad/missing */
 				/* CI_MPPE, or due to other options?       */
 #endif
 
